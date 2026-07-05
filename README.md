@@ -54,3 +54,29 @@ Support for more operating systems is in progress, right now it works best on li
 ```
 nu slice.nu
 ```
+
+### fim.nu
+
+This script gathers BLAKE3 hashes of files from `fim.json`.
+
+```
+[
+  {"target": "/etc/hosts"},
+  {"target": "/etc/ssh/sshd_config"},
+  {"target": "/bin/bash"},
+  {"target": "/bin/sh"},
+  {"target": "/usr/local/bin/elvish"},
+  {"target": "/etc/timezone"},
+  {"target": "/etc/profile"},
+  {"target": "/etc/timezone"},
+  {"target": "/etc/sysctl.conf"},
+  {"target": "/vmlinuz"},
+  {"target": "/initrd.img"}
+]
+```
+
+Each file check runs in parallel and writes a JSON file with the timestamps, file name, any errors if there were errors, a UUIDv4, and the BLAKE3 hash of the file.
+
+```
+nu fim.nu
+```
