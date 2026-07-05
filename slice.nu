@@ -45,7 +45,8 @@ def remote-connections [] {
         ^ss -tunpH
         | lines
     } else {
-        ^
+        ^netstat -a
+        | lines
     }
 }
 
