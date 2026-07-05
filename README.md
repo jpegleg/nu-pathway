@@ -42,7 +42,7 @@ This is for remote administration with an inventory file named `inventory.json` 
 Once your `inventory.json` is contructed, we can execute commands against all of them in parallel using `command.nu`, capturing the output data to JSON files.
 
 ```
-$ nu command.nu "uptime"
+nu command.nu "uptime"
 ```
 
 ### slice.nu
@@ -52,5 +52,5 @@ This script captures some statistics from the system and outputs JSON to STDOUT.
 Support for more operating systems is in progress, right now it works best on linux based systems.
 
 ```
-$ nu slice.nu
+nu slice.nu
 ```
