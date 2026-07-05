@@ -57,7 +57,7 @@ nu slice.nu
 
 ### fim.nu
 
-This script gathers BLAKE3 hashes of files from `fim.json`.
+This script gathers BLAKE3 hashes of files from `fim.json`. This script requires [giant-spellbook](https://github.com/jpegleg/giant-spellbook/) which is used for the BLAKE3 hashing.
 
 ```
 [
