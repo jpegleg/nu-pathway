@@ -1,14 +1,5 @@
 #!/usr/bin/env nu
 
-def largest-files [limit:int = 20] {
-    ^find -type f -printf "%s\t%p\n" 2>/dev/null
-    | lines
-    | parse "{size}\t{path}"
-    | update size {|r| $r.size | into int }
-    | sort-by size --reverse
-    | first $limit
-}
-
 def top-memory [limit:int = 20] {
     ^ps -eo pid,user,%mem,rss,comm --sort=-rss
     | lines
@@ -23,16 +14,6 @@ def top-memory [limit:int = 20] {
             rss_kb: ($r.rss | into int)
             command: $r.command
         }
-    }
-}
-
-def top-io [limit:int = 20] {
-    if (which iotop | is-not-empty) {
-        ^iotop -b -n 1 -oqqq
-        | lines
-        | first $limit
-    } else {
-        []
     }
 }
 
@@ -64,7 +45,7 @@ def remote-connections [] {
         ^ss -tunpH
         | lines
     } else {
-        []
+        ^
     }
 }
 
@@ -94,11 +75,7 @@ let report = {
 
     disks: (disks)
 
-    largest_files: (largest-files 20)
-
     top_memory_processes: (top-memory 20)
-
-    top_io_processes: (top-io 20)
 
     logged_in_users: (logged-in-users)
 
