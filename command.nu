@@ -37,7 +37,7 @@ def main [command: string] {
 
         $log
         | to json
-        | save --append commands.log
+        | save --append command_($host.dns)_($session_id)_($timestamp | format date "%Y%m%d-%H%M").json
 
         $log
     }
